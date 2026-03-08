@@ -6,7 +6,7 @@ import {
   PostListItem,
   PostDetail,
 } from '../types.js';
-import { USER_AGENT, MAX_CONCURRENCY, MAX_RETRIES } from '../config.js';
+import { MAX_CONCURRENCY, MAX_RETRIES } from '../config.js';
 import { Deduplicator } from '../storage/deduplicator.js';
 import { logger } from '../utils/logger.js';
 
@@ -37,11 +37,12 @@ export abstract class BaseScraper {
         maxRequestRetries: MAX_RETRIES,
         preNavigationHooks: [
           (_ctx, gotOptions) => {
-            gotOptions.headers = {
-              ...gotOptions.headers,
-              'user-agent': USER_AGENT,
-              'accept-language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7',
-              'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+            gotOptions.headerGeneratorOptions = {
+              browsers: ['chrome'],
+              operatingSystems: ['macos'],
+              devices: ['desktop'],
+              locales: ['ko-KR'],
+              httpVersion: '2',
             };
           },
         ],

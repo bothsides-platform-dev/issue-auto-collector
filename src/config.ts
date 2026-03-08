@@ -37,6 +37,12 @@ export const SITE_CONFIGS: Record<SiteName, SiteConfig> = {
     baseUrl: 'https://www.instiz.net',
     maxRequestsPerMinute: 15,
   },
+  navercafe: {
+    name: 'navercafe',
+    listUrl: 'https://cafe.naver.com/inissue',
+    baseUrl: 'https://cafe.naver.com',
+    maxRequestsPerMinute: 15,
+  },
 };
 
 export const MAX_CONCURRENCY = 1;

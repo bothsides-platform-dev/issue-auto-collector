@@ -6,6 +6,7 @@ import { PpomppuScraper } from './scrapers/ppomppu.js';
 import { RuliwebScraper } from './scrapers/ruliweb.js';
 import { TheqooScraper } from './scrapers/theqoo.js';
 import { InstizScraper } from './scrapers/instiz.js';
+import { NavercafeScraper } from './scrapers/navercafe.js';
 import { JsonStore } from './storage/json-store.js';
 import { Deduplicator } from './storage/deduplicator.js';
 import { logger } from './utils/logger.js';
@@ -19,6 +20,7 @@ const ALL_SCRAPERS: Record<SiteName, () => BaseScraper> = {
   ruliweb: () => new RuliwebScraper(),
   theqoo: () => new TheqooScraper(),
   instiz: () => new InstizScraper(),
+  navercafe: () => new NavercafeScraper(),
 };
 
 async function main() {

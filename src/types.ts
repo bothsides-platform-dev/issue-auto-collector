@@ -1,4 +1,4 @@
-export type SiteName = 'dcinside' | 'fmkorea' | 'ppomppu' | 'ruliweb' | 'theqoo' | 'instiz';
+export type SiteName = 'dcinside' | 'fmkorea' | 'ppomppu' | 'ruliweb' | 'theqoo' | 'instiz' | 'navercafe';
 
 export interface TrendingPost {
   id: string;

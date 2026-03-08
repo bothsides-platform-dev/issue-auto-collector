@@ -12,6 +12,7 @@
 | **루리웹** | 베스트 | https://bbs.ruliweb.com/best |
 | **더쿠** | 인기글 | https://theqoo.net/hot |
 | **인스티즈** | 인기글 | https://www.instiz.net/ |
+| **네이버카페(이슈인)** | 인기글 | https://cafe.naver.com/inissue |
 
 ## 사용법
 

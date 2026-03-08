@@ -1,0 +1,22 @@
+{
+  "name": "issue-auto-collector",
+  "version": "1.0.0",
+  "description": "Korean community trending issue auto-collector",
+  "type": "module",
+  "scripts": {
+    "collect": "tsx src/index.ts",
+    "build": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "crawlee": "^3.12.2",
+    "cheerio": "^1.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3",
+    "tsx": "^4.19.2",
+    "vitest": "^3.0.5",
+    "@types/node": "^20.17.12"
+  }
+}

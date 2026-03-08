@@ -1,0 +1,29 @@
+name: Collect Trending Issues
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch: {}
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: data
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: source
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: cd source && npm ci
+      - run: cd source && npm run collect -- --output-dir $GITHUB_WORKSPACE/data
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -m "data: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git push

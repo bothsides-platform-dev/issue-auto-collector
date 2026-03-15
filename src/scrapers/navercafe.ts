@@ -96,7 +96,15 @@ export class NavercafeScraper extends BaseScraper {
               }
             });
             if (imgs.length > 0) imageUrls = imgs;
+            const altTexts: string[] = [];
+            $('img').each((_, el) => {
+              const alt = $(el).attr('alt');
+              if (alt && alt.trim()) altTexts.push(alt.trim());
+            });
             content = sanitizeText(contentHtml);
+            if (!content.trim() && altTexts.length > 0) {
+              content = altTexts.join('\n');
+            }
           }
         } else {
           logger.warn(`[${siteName}] Detail API failed for ${article.articleId}: ${detailRes.status}`);

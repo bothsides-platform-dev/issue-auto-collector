@@ -8,6 +8,7 @@ import { TheqooScraper } from './scrapers/theqoo.js';
 import { InstizScraper } from './scrapers/instiz.js';
 import { NavercafeScraper } from './scrapers/navercafe.js';
 import { JsonStore } from './storage/json-store.js';
+import { MarkdownStore } from './storage/markdown-store.js';
 import { Deduplicator } from './storage/deduplicator.js';
 import { logger } from './utils/logger.js';
 import { BaseScraper } from './scrapers/base.js';
@@ -88,11 +89,15 @@ async function main() {
   const store = new JsonStore(outputDir);
   const filePath = await store.save(collectionResult);
 
+  const mdStore = new MarkdownStore(outputDir);
+  const mdFilePath = await mdStore.save(collectionResult);
+
   await deduplicator.save();
 
   logger.info(`=== Collection complete ===`);
   logger.info(`Total posts: ${totalPosts}`);
   logger.info(`Saved to: ${filePath}`);
+  logger.info(`Markdown: ${mdFilePath}`);
 
   for (const r of results) {
     const status = r.error ? `ERROR: ${r.error}` : `${r.posts.length} posts`;
